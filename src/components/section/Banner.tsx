@@ -1,12 +1,9 @@
-import { useEffect, useRef, lazy, Suspense } from 'react';
+import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import heroImg from '../../assets/rmbsapio.webp'
 import TiltedCard from '../ui/TiltedCard';
 import { useIsMobile } from '../../hooks/useIsMobile';
-
-// Lazy load Galaxy component to reduce initial bundle size
-const Galaxy = lazy(() => import('../ui/Galaxy'));
 
 export default function Banner() {
   const isMobile = useIsMobile();
@@ -117,15 +114,6 @@ export default function Banner() {
   return (
     <section ref={sectionRef} className="section-1 relative flex items-center overflow-hidden">
       <div className="absolute inset-0 bg-background" />
-      <div ref={galaxyRef} className="absolute inset-0 z-0">
-        <Suspense fallback={<div className="w-full h-full" />}>
-          <Galaxy 
-            mouseInteraction={!isMobile}
-            mouseRepulsion={false}
-            transparent={true}
-          />
-        </Suspense>
-      </div>
       <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10 items-center">
         {/* Image - First on mobile, second on desktop */}
         <div ref={imageRef} className="relative w-full h-[200px] sm:h-[260px] md:h-[420px] lg:h-[520px] flex items-center justify-center order-1 md:order-2">

@@ -1,11 +1,8 @@
-import { useState, useEffect, useRef, lazy, Suspense } from 'react';
+import { useState, useEffect, useRef} from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import emailjs from '@emailjs/browser';
 import { useIsMobile } from '../../hooks/useIsMobile';
-
-// Lazy load Galaxy component to reduce initial bundle size
-const Galaxy = lazy(() => import('../ui/Galaxy'));
 
 // EmailJS configuration
 // You'll need to set these up in your EmailJS account:
@@ -224,19 +221,6 @@ export default function Contact() {
 
     return (
         <section ref={sectionRef} id="contact" className="section-1 relative flex flex-col items-center justify-center overflow-hidden py-20 md:py-28">
-            <div className="absolute inset-0 bg-background" />
-            <div ref={galaxyRef} className="absolute inset-0 z-0">
-                <Suspense fallback={<div className="w-full h-full" />}>
-                    <Galaxy 
-                        mouseInteraction={!isMobile}
-                        mouseRepulsion={false}
-                        transparent={true}
-                        density={0.8}
-                        glowIntensity={0.4}
-                    />
-                </Suspense>
-            </div>
-            
             <div className="relative z-10 mx-auto w-full max-w-full sm:max-w-md md:max-w-4xl px-4 sm:px-6">
                 <header ref={headerRef} className="mb-12 md:mb-16 text-center">
                     <h2 className="text-heading-2 text-foreground">Get in touch</h2>

@@ -1,8 +1,10 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 import { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import ChromaGrid from '../ui/ChromaGrid';
 import { useIsMobile } from '../../hooks/useIsMobile';
+import LogoLoop from '../ui/LogoLoop';
 import { 
     ReactOriginal, 
     NextjsOriginal, 
@@ -25,16 +27,16 @@ export default function Techstack() {
     const headerRef = useRef<HTMLElement>(null);
     const gridRef = useRef<HTMLDivElement>(null);
     const isMobile = useIsMobile();
-    const [iconSize, setIconSize] = useState(280);
+    const [iconSize, setIconSize] = useState(124);
 
     useEffect(() => {
         const updateIconSize = () => {
             if (window.innerWidth < 640) {
-                setIconSize(180);
+                setIconSize(80);
             } else if (window.innerWidth < 768) {
-                setIconSize(220);
+                setIconSize(100);
             } else {
-                setIconSize(280);
+                setIconSize(124);
             }
         };
 
@@ -43,109 +45,70 @@ export default function Techstack() {
         return () => window.removeEventListener('resize', updateIconSize);
     }, []);
 
-    const techstack = [
+    const logos = [
         {
-            image: <ReactOriginal size={iconSize} />,
+            src: <ReactOriginal size={iconSize} />,
             title: 'React',
-            subtitle: 'Frontend Development',
-            borderColor: '#4F46E5',
-            gradient: 'linear-gradient(145deg,#4F46E5,#000)',
             url: 'https://react.dev/'
         },
         {
-            image: <NextjsOriginal size={iconSize} />,
+            src: <NextjsOriginal size={iconSize} />,
             title: 'Next.js',
-            subtitle: 'Backend Development',
-            borderColor: '#10B981',
-            gradient: 'linear-gradient(210deg,#10B981,#000)',
             url: 'https://nextjs.org/'
         },
         {
-            image: <TailwindcssOriginal size={iconSize} />,
+            src: <TailwindcssOriginal size={iconSize} />,
             title: 'Tailwind CSS',
-            subtitle: 'UI/UX Design',
-            borderColor: '#F59E0B',
-            gradient: 'linear-gradient(165deg,#F59E0B,#000)',
             url: 'https://tailwindcss.com/'
         },
         {
-            image: <TypescriptOriginal size={iconSize} />,
+            src: <TypescriptOriginal size={iconSize} />,
             title: 'Typescript',
-            subtitle: 'Programming Language',
-            borderColor: '#EF4444',
-            gradient: 'linear-gradient(195deg,#EF4444,#000)',
             url: 'https://www.typescriptlang.org/'
         },
         {
-            image: <PythonOriginal size={iconSize} />,
+            src: <PythonOriginal size={iconSize} />,
             title: 'Python',
-            subtitle: 'Programming Language',
-            borderColor: '#8B5CF6',
-            gradient: 'linear-gradient(225deg,#8B5CF6,#000)',
             url: 'https://www.python.org/'
         },
         {
-            image: <JavaOriginal size={iconSize} />,
+            src: <JavaOriginal size={iconSize} />,
             title: 'Java',
-            subtitle: 'Programming Language',
-            borderColor: '#06B6D4',
-            gradient: 'linear-gradient(135deg,#06B6D4,#000)',
             url: 'https://www.java.com/'
         },
         {
-            image: <SvelteOriginal size={iconSize} />,
+            src: <SvelteOriginal size={iconSize} />,
             title: 'Svelte',
-            subtitle: 'Frontend Development',
-            borderColor: '#06B6D4',
-            gradient: 'linear-gradient(135deg,#06B6D4,#000)',
             url: 'https://svelte.dev/'
         },
         {
-            image: <NodejsOriginal size={iconSize} />,
+            src: <NodejsOriginal size={iconSize} />,
             title: 'Node.js',
-            subtitle: 'Backend Development',
-            borderColor: '#06B6D4',
-            gradient: 'linear-gradient(135deg,#06B6D4,#000)',
             url: 'https://nodejs.org/'
         },
         {
-            image: <FlutterOriginal size={iconSize} />,
+            src: <FlutterOriginal size={iconSize} />,
             title: 'Flutter',
-            subtitle: 'Mobile Development',
-            borderColor: '#06B6D4',
-            gradient: 'linear-gradient(135deg,#06B6D4,#000)',
             url: 'https://flutter.dev/'
         },
         {
-            image: <DartOriginal size={iconSize} />,
+            src: <DartOriginal size={iconSize} />,
             title: 'Dart',
-            subtitle: 'Programming Language',
-            borderColor: '#06B6D4',
-            gradient: 'linear-gradient(135deg,#06B6D4,#000)',
             url: 'https://dart.dev/'
         },
         {
-            image: <CplusplusOriginal size={iconSize} />,
+            src: <CplusplusOriginal size={iconSize} />,
             title: 'C++',
-            subtitle: 'Programming Language',
-            borderColor: '#06B6D4',
-            gradient: 'linear-gradient(135deg,#06B6D4,#000)',
             url: 'https://learncpp.com/'
         },
         {
-            image: <Html5Original size={iconSize} />,
+            src: <Html5Original size={iconSize} />,
             title: 'HTML5',
-            subtitle: 'Web Development',
-            borderColor: '#06B6D4',
-            gradient: 'linear-gradient(135deg,#06B6D4,#000)',
             url: 'https://html.com/'
         },
         {
-            image: <Css3Original size={iconSize} />,
+            src: <Css3Original size={iconSize} />,
             title: 'CSS3',
-            subtitle: 'Web Development',
-            borderColor: '#06B6D4',
-            gradient: 'linear-gradient(135deg,#06B6D4,#000)',
             url: 'https://web.dev/learn/css/'
         }
     ];
@@ -246,13 +209,26 @@ export default function Techstack() {
                 </header>
             </div>
             <div ref={gridRef} className="relative w-full h-full bg-background flex items-center justify-center">
-            <ChromaGrid 
-            items={techstack}
-            radius={300}
-            damping={0.45}
-            fadeOut={0.6}
-            ease="power3.out"
-            />
+                <LogoLoop 
+                logos={logos}
+                speed={60}
+                direction="left"
+                width="100%"
+                logoHeight={iconSize}
+                gap={32}
+                pauseOnHover={true}
+                hoverSpeed={0.5}
+                fadeOut={true}
+                fadeOutColor="#000"
+                scaleOnHover={true}
+                renderItem={(item, key) => (
+                    <div key={key} className="flex items-center justify-center h-[var(--logoloop-logoHeight)] w-[var(--logoloop-logoHeight)]">
+                        {(item as any).src}
+                    </div>
+                )}
+                ariaLabel="Techstack logos"
+                className="w-full h-full"
+                />
             </div>
         </section>
     );
