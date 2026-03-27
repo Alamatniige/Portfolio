@@ -11,7 +11,7 @@
   /* Default to dark mode, will be overridden by theme toggle */
   color-scheme: dark;
   color: rgba(218, 245, 222, 0.95);
-  background-color: #051F20;
+  background-color: #051f20;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -138,7 +138,7 @@ button:focus-visible {
 :root:not(.dark) {
   color-scheme: light;
   color: rgba(5, 31, 32, 0.95);
-  background-color: #FAFAFA;
+  background-color: #fafafa;
   --background: oklch(0.98 0.005 180);
   --foreground: oklch(0.125 0.016 185);
   --card: oklch(1 0 0);
@@ -219,7 +219,7 @@ button:focus-visible {
 /* Section */
 
 .section-1 {
-  @apply bg-background min-h-screen;
+  @apply min-h-screen;
 }
 
 /* Logo spin animation */
@@ -238,7 +238,8 @@ button:focus-visible {
 
 /* Button bounce animation */
 @keyframes bounce-click {
-  0%, 100% {
+  0%,
+  100% {
     transform: scale(1);
   }
   50% {
@@ -253,7 +254,7 @@ button:focus-visible {
 /* Outline button glow effect - uses primary color */
 @layer utilities {
   .hover\:outline-glow:hover {
-    box-shadow: 
+    box-shadow:
       0 0 0 1px oklch(from var(--primary) calc(l + 0.1) c h / 0.3),
       0 0 20px oklch(from var(--primary) calc(l + 0.1) c h / 0.4),
       0 0 40px oklch(from var(--primary) calc(l + 0.1) c h / 0.2),
@@ -266,23 +267,23 @@ button:focus-visible {
   .text-heading-1 {
     @apply text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold;
   }
-  
+
   .text-heading-2 {
     @apply text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold;
   }
-  
+
   .text-heading-3 {
     @apply text-xl sm:text-2xl md:text-3xl font-semibold;
   }
-  
+
   .text-body-lg {
     @apply text-base sm:text-lg md:text-xl;
   }
-  
+
   .text-body {
     @apply text-sm sm:text-base md:text-lg;
   }
-  
+
   .text-body-sm {
     @apply text-xs sm:text-sm;
   }

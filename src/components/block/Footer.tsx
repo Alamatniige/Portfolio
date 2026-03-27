@@ -1,20 +1,20 @@
-import { Facebook, Linkedin, Github } from 'lucide-react';
+import { Facebook, Linkedin, Github } from "lucide-react";
 
 // Social links configuration
 const socialLinks = [
   {
-    name: 'Facebook',
-    url: 'https://www.facebook.com/alamatniige',
+    name: "Facebook",
+    url: "https://www.facebook.com/alamatniige",
     icon: Facebook,
   },
   {
-    name: 'LinkedIn',
-    url: 'https://www.linkedin.com/in/ruiz-miguel-sapio-0b4a63270/',
+    name: "LinkedIn",
+    url: "https://www.linkedin.com/in/ruiz-miguel-sapio-0b4a63270/",
     icon: Linkedin,
   },
   {
-    name: 'GitHub',
-    url: 'https://github.com/Alamatniige',
+    name: "GitHub",
+    url: "https://github.com/Alamatniige",
     icon: Github,
   },
 ];
@@ -23,12 +23,13 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="relative bg-background">
+    <footer className="relative bg-black">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 py-8 md:py-12 lg:py-16">
         <div className="flex flex-col items-center gap-6 md:gap-8 lg:gap-10">
           {/* Tagline */}
           <p className="text-center text-body text-muted-foreground max-w-2xl">
-            Creating beautiful and functional web experiences with modern technologies
+            Creating beautiful and functional web experiences with modern
+            technologies
           </p>
 
           {/* Social Links */}
@@ -59,5 +60,3 @@ export default function Footer() {
     </footer>
   );
 }
-
-

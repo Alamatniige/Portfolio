@@ -1,9 +1,9 @@
-import { useEffect, useRef } from 'react';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import heroImg from '../../assets/rmbsapio.webp'
-import TiltedCard from '../ui/TiltedCard';
-import { useIsMobile } from '../../hooks/useIsMobile';
+import { useEffect, useRef } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import heroImg from "../../assets/rmbsapio.webp";
+import TiltedCard from "../ui/TiltedCard";
+import { useIsMobile } from "../../hooks/useIsMobile";
 
 export default function Banner() {
   const isMobile = useIsMobile();
@@ -18,7 +18,7 @@ export default function Banner() {
     const text = textRef.current;
     const image = imageRef.current;
     const galaxy = galaxyRef.current;
-    
+
     if (!section || !text || !image) return;
 
     // Reduce parallax intensity on mobile (50-70% reduction)
@@ -29,8 +29,8 @@ export default function Banner() {
       y: -100 * parallaxMultiplier,
       scrollTrigger: {
         trigger: section,
-        start: 'top top',
-        end: 'bottom top',
+        start: "top top",
+        end: "bottom top",
         scrub: 1,
       },
     });
@@ -40,8 +40,8 @@ export default function Banner() {
       y: -150 * parallaxMultiplier,
       scrollTrigger: {
         trigger: section,
-        start: 'top top',
-        end: 'bottom top',
+        start: "top top",
+        end: "bottom top",
         scrub: 1,
       },
     });
@@ -52,8 +52,8 @@ export default function Banner() {
         y: -50 * parallaxMultiplier,
         scrollTrigger: {
           trigger: section,
-          start: 'top top',
-          end: 'bottom top',
+          start: "top top",
+          end: "bottom top",
           scrub: 1,
         },
       });
@@ -70,13 +70,13 @@ export default function Banner() {
         opacity: 1,
         y: 0,
         duration: 1.2,
-        ease: 'power3.out',
+        ease: "power3.out",
         scrollTrigger: {
           trigger: text,
-          start: 'top 80%',
-          toggleActions: 'play none none reverse',
+          start: "top 80%",
+          toggleActions: "play none none reverse",
         },
-      }
+      },
     );
 
     // Fade in animation for image
@@ -91,20 +91,25 @@ export default function Banner() {
         scale: 1,
         duration: 1.2,
         delay: 0.3,
-        ease: 'power3.out',
+        ease: "power3.out",
         scrollTrigger: {
           trigger: image,
-          start: 'top 80%',
-          toggleActions: 'play none none reverse',
+          start: "top 80%",
+          toggleActions: "play none none reverse",
         },
-      }
+      },
     );
 
     return () => {
       // Kill all ScrollTriggers associated with this section
       ScrollTrigger.getAll().forEach((trigger) => {
         const triggerElement = trigger.vars.trigger;
-        if (triggerElement === section || triggerElement === text || triggerElement === image || triggerElement === galaxy) {
+        if (
+          triggerElement === section ||
+          triggerElement === text ||
+          triggerElement === image ||
+          triggerElement === galaxy
+        ) {
           trigger.kill();
         }
       });
@@ -112,11 +117,16 @@ export default function Banner() {
   }, [isMobile]);
 
   return (
-    <section ref={sectionRef} className="section-1 relative flex items-center overflow-hidden">
-      <div className="absolute inset-0 bg-background" />
+    <section
+      ref={sectionRef}
+      className="section-1 relative flex items-center overflow-hidden"
+    >
       <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10 items-center">
         {/* Image - First on mobile, second on desktop */}
-        <div ref={imageRef} className="relative w-full h-[200px] sm:h-[260px] md:h-[420px] lg:h-[520px] flex items-center justify-center order-1 md:order-2">
+        <div
+          ref={imageRef}
+          className="relative w-full h-[200px] sm:h-[260px] md:h-[420px] lg:h-[520px] flex items-center justify-center order-1 md:order-2"
+        >
           <TiltedCard
             imageSrc={heroImg}
             altText="AI Generated Image of myself."
@@ -131,16 +141,19 @@ export default function Banner() {
           />
         </div>
         {/* Text - Second on mobile, first on desktop */}
-        <div ref={textRef} className="text-center md:text-left order-2 md:order-1">
+        <div
+          ref={textRef}
+          className="text-center md:text-left order-2 md:order-1"
+        >
           <h2 className="text-heading-1 tracking-wide text-foreground mb-4 md:mb-6">
             Ruiz Miguel Sapio
           </h2>
           <p className="text-body-lg text-foreground mb-6 md:mb-8 max-w-prose mx-auto md:mx-0">
-            I'm an IT student with a passion for building digital solutions that solve real-world problems.
+            I'm an IT student with a passion for building digital solutions that
+            solve real-world problems.
           </p>
         </div>
       </div>
     </section>
-    
   );
 }

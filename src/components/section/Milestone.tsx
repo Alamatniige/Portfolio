@@ -245,7 +245,7 @@ export default function Milestone() {
     <section
       ref={sectionRef}
       id="about"
-      className="relative w-full bg-background py-12 md:py-20 lg:py-28"
+      className="relative w-full py-12 md:py-20 lg:py-28"
     >
       {/* Parallax timeline line - hidden on mobile, visible on desktop */}
       {!isMobile && (

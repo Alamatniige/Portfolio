@@ -274,7 +274,7 @@ export default function Projects() {
     <section
       ref={sectionRef}
       id="projects"
-      className="section-1 relative flex items-center overflow-hidden"
+      className="relative flex items-center overflow-hidden"
     >
       <div className="relative mx-auto w-full max-w-7xl px-4 sm:px-6">
         <header ref={headerRef} className="mb-12 md:mb-16 text-center">
